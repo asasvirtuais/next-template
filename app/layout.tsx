@@ -1,5 +1,6 @@
 import React from 'react'
 import { Provider } from '@/components/ui/provider'
+import { Auth0Provider } from '@auth0/nextjs-auth0/client'
 
 export default function RootLayout({
   children,
@@ -9,9 +10,11 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body>
-        <Provider>
-          {children}
-        </Provider>
+        <Auth0Provider>
+          <Provider>
+            {children}
+          </Provider>
+        </Auth0Provider>
       </body>
     </html>
   )
