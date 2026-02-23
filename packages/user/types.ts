@@ -11,6 +11,8 @@ export const writable = readable.pick({
     sub: true,
 })
 
+export const schema = { readable, writable }
+
 export type Readable = z.infer<typeof readable>
 export type Writable = z.infer<typeof writable>
 
