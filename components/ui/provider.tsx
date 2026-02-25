@@ -1,15 +1,22 @@
-"use client"
+'use client';
 
-import { ChakraProvider, defaultSystem } from "@chakra-ui/react"
-import {
-  ColorModeProvider,
-  type ColorModeProviderProps,
-} from "./color-mode"
+import { MantineProvider, createTheme } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
+import React from 'react';
 
-export function Provider(props: ColorModeProviderProps) {
+const theme = createTheme({
+  primaryColor: 'violet',
+  fontFamily: 'Inter, sans-serif',
+  headings: {
+    fontFamily: 'Outfit, sans-serif',
+  },
+});
+
+export function Provider({ children }: { children: React.ReactNode }) {
   return (
-    <ChakraProvider value={defaultSystem}>
-      <ColorModeProvider {...props} />
-    </ChakraProvider>
-  )
+    <MantineProvider theme={theme} defaultColorScheme="dark">
+      <Notifications />
+      {children}
+    </MantineProvider>
+  );
 }
